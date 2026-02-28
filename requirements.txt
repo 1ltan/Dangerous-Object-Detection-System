@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+websockets
+python-multipart
+opencv-python-headless
+ultralytics
+pydantic

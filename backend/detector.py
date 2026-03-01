@@ -60,9 +60,9 @@ def process_frame_for_incidents(frame, results, camera_id: int):
             os.makedirs(os.path.dirname(filepath), exist_ok=True)
             cv2.imwrite(filepath, save_frame)
             status = "pending"
-            if probability >= 85:
+            if probability >= 70:
                 status = "confirmed"
-            elif probability < 40:
+            elif probability <= 10:
                 status = "trash"
                 
             db_image_path = "/" + filepath.replace("\\", "/")
@@ -129,7 +129,7 @@ def get_video_stream(camera_id: int, url: str):
 
         if model:
             # Run YOLO
-            results = model.predict(frame, verbose=False) 
+            results = model.predict(frame, conf=0.10, verbose=False) 
             # Run incident processing synchronously
             try:
                 process_frame_for_incidents(frame, results, camera_id)

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive - Detection System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .archive-content {
+            padding: 20px;
+            width: 100%;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>Navigation</h2>
+        <button onclick="window.location.href='/'">Dashboard</button>
+        <button onclick="window.location.href='analytics.html'">Analytics</button>
+        <button onclick="window.location.href='trash.html'">Trash</button>
+    </div>
+
+    <div class="archive-content">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')"
+                    title="Toggle Menu">
+                    &#9776;
+                </button>
+                <div class="header">
+                    <h1>INCIDENT ARCHIVE</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <input type="date" id="start-date" placeholder="Start Date">
+            <input type="date" id="end-date" placeholder="End Date">
+            <select id="cam-filter">
+                <option value="">All Cameras</option>
+            </select>
+            <button id="apply-filters">Filter</button>
+        </div>
+
+        <table id="archive-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Camera ID</th>
+                    <th>Object</th>
+                    <th>Probability</th>
+                    <th>Snapshot</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="archive.js"></script>
+</body>
+
+</html>
